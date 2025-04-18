@@ -96,7 +96,7 @@ function RouteComponent() {
                 id={name}
                 placeholder={label}
                 onChange={handleChange}
-                value={form[name]}
+                value={String(form[name as keyof typeof form])}
                 required
               />
             </div>
@@ -152,7 +152,7 @@ function RouteComponent() {
                     id={name}
                     placeholder={label}
                     onChange={handleChange}
-                    value={form[name]}
+                    value={String(form[name as keyof typeof form])}
                     required
                   />
                 </div>

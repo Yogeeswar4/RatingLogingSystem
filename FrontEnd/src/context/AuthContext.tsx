@@ -37,7 +37,7 @@ function AuthProvider({ children }: { readonly children: ReactNode }) {
             localStorage.removeItem("token");
             setTimeout(() => setUser(null), 0);
           } else {
-            setUser({ id: decoded.userId, role: decoded.role });
+            setUser({ id: decoded.id, role: decoded.role });
           }
         } catch (error) {
           console.error("Invalid token:", error);

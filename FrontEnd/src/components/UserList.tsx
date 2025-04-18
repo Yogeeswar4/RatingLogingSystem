@@ -1,4 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
+
+// Define the User type
+type User = {
+  id: number;
+  name: string;
+  email: string;
+  address: string;
+  role: string;
+};
 import { fetcher } from "../utils/api";
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
