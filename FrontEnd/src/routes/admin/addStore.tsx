@@ -74,27 +74,23 @@ function RouteComponent() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-gradient-to-br from-teal-500 via-blue-500 to-indigo-600 min-h-screen">
       <button
         onClick={() => navigate({ to: "/admin/dashboard" })}
-        className="absolute left-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+        className="absolute left-4 top-4 px-6 py-3 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transform transition duration-300 hover:scale-105"
       >
         Back
       </button>
-      <div className="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-bold mb-4 text-center">Add New Store</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {[
-            { label: "Store Name", name: "name", type: "text" },
-            { label: "Store Email", name: "email", type: "email" },
-            { label: "Store Address", name: "address", type: "text" },
-          ].map(({ label, name, type }) => (
+      <div className="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg p-8">
+        <h2 className="text-2xl font-extrabold mb-6 text-center text-gray-800">Add New Store</h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {[{ label: "Store Name", name: "name", type: "text" }, { label: "Store Email", name: "email", type: "email" }, { label: "Store Address", name: "address", type: "text" }].map(({ label, name, type }) => (
             <div key={name} className="flex flex-col">
-              <label className="mb-1 font-medium" htmlFor={name}>
+              <label className="mb-2 font-medium text-gray-700" htmlFor={name}>
                 {label}
               </label>
               <input
-                className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type={type}
                 name={name}
                 id={name}
@@ -108,9 +104,9 @@ function RouteComponent() {
 
           {!form.createNewOwner && (
             <div className="flex flex-col">
-              <label className="mb-1 font-medium" htmlFor="ownerId">Store Owner</label>
+              <label className="mb-2 font-medium text-gray-700" htmlFor="ownerId">Store Owner</label>
               <select
-                className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 name="ownerId"
                 id="ownerId"
                 onChange={handleChange}
@@ -128,7 +124,7 @@ function RouteComponent() {
             </div>
           )}
 
-          <div className="flex items-center">
+          <div className="flex items-center mt-4">
             <input
               type="checkbox"
               id="createNewOwner"
@@ -136,28 +132,20 @@ function RouteComponent() {
               onChange={handleCheckboxChange}
               className="mr-2"
             />
-            <label htmlFor="createNewOwner" className="font-medium">
+            <label htmlFor="createNewOwner" className="font-medium text-gray-700">
               Create New Store Owner
             </label>
           </div>
 
           {form.createNewOwner && (
             <>
-              {[
-                { label: "Owner Name", name: "ownerName", type: "text" },
-                { label: "Owner Email", name: "ownerEmail", type: "email" },
-                {
-                  label: "Owner Password",
-                  name: "ownerPassword",
-                  type: "password",
-                },
-              ].map(({ label, name, type }) => (
+              {[{ label: "Owner Name", name: "ownerName", type: "text" }, { label: "Owner Email", name: "ownerEmail", type: "email" }, { label: "Owner Password", name: "ownerPassword", type: "password" }].map(({ label, name, type }) => (
                 <div key={name} className="flex flex-col">
-                  <label className="mb-1 font-medium" htmlFor={name}>
+                  <label className="mb-2 font-medium text-gray-700" htmlFor={name}>
                     {label}
                   </label>
                   <input
-                    className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     type={type}
                     name={name}
                     autoComplete="off"
@@ -172,7 +160,7 @@ function RouteComponent() {
             </>
           )}
 
-          <button className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+          <button className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-all duration-300">
             Add Store
           </button>
         </form>

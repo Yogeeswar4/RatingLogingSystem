@@ -17,8 +17,7 @@ function RouteComponent() {
     password: "",
   });
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false); // Initialize loading state
-
+  const [loading, setLoading] = useState(false); 
   useEffect(() => {
     if (user) {
       if (user.role === "user") {
@@ -36,12 +35,11 @@ function RouteComponent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    setLoading(true); // Set loading to true when form is submitted
-
-    // Validation
+    setLoading(true); 
+    
     if (form.name.length < 20 || form.name.length > 60) {
       setError("Name must be between 20 and 60 characters.");
-      setLoading(false); // Stop loading on validation error
+      setLoading(false); 
       return;
     }
     if (form.address.length > 400) {
@@ -69,23 +67,23 @@ function RouteComponent() {
         method: "POST",
         body: JSON.stringify({ ...form, role: "user" }),
       });
-      setLoading(false); // Stop loading after successful submission
+      setLoading(false); 
       navigate({ to: "/auth/login" });
     } catch (err) {
       console.error(err);
       setError("Registration failed. Try again.");
-      setLoading(false); // Stop loading on error
+      setLoading(false); 
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative overflow-hidden">
-      {/* Background Animation */}
+    
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full animate-pulse bg-gradient-to-r from-teal-600 to-blue-700 opacity-20"></div>
       </div>
 
-      {/* Rating and Feedback Section */}
+     
       <div className="absolute top-5 left-0 right-0 z-10 text-center text-white text-xl font-semibold opacity-90">
         <p className="text-2xl">⭐ Rate our platform ⭐</p>
         <div className="flex justify-center mt-3 text-yellow-300 space-x-2">
@@ -97,19 +95,18 @@ function RouteComponent() {
         </div>
       </div>
 
-      {/* Chocolate 5-Star Rating Image Section */}
+      
       <div className="absolute top-20 left-0 right-0 z-10 text-center text-white opacity-80">
-        <p className="text-lg">Our users rate us 5 stars! 🍫</p>
+       
         <img
           src="https://static.vecteezy.com/system/resources/previews/003/355/389/non_2x/five-5-star-rank-sign-illustration-free-vector.jpg"
           alt="Chocolate covered 5-star rating"
           className="mx-auto mt-4 rounded-xl shadow-lg"
         />
-        <p className="mt-2 text-lg">5-Star Rating: "Delicious!"</p>
-        <p className="mt-2 italic text-sm text-gray-300">"This is a placeholder comment to show user feedback." (Read-only)</p>
+       
       </div>
 
-      {/* Sign Up Form Section */}
+      
       <div className="bg-white p-12 rounded-3xl shadow-2xl w-full max-w-md transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-2xl z-10">
         <h2 className="text-4xl font-extrabold mb-6 text-center text-gray-800 tracking-tight">
           Sign Up to Rate
@@ -173,20 +170,22 @@ function RouteComponent() {
           </div>
 
           <button
-            type="submit"
-            className={`w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 rounded-xl hover:bg-gradient-to-l transition-all duration-300 ease-in-out transform ${
-              loading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            disabled={loading}
-          >
-            {loading ? (
-              <div className="w-full h-full flex justify-center items-center">
-                <div className="w-6 h-6 border-4 border-t-4 border-white rounded-full animate-spin"></div>
-              </div>
-            ) : (
-              "Register"
-            )}
+  type="submit"
+  className={`w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 rounded-xl hover:bg-gradient-to-l transition-all duration-300 ease-in-out transform cursor-pointer ${
+    loading ? "opacity-50 cursor-not-allowed" : ""
+  }`}
+  disabled={loading}
+>
+  {loading ? (
+    <div className="w-full h-full flex justify-center items-center">
+      <div className="w-6 h-6 border-4 border-t-4 border-white rounded-full animate-spin"></div>
+    </div>
+  ) : (
+    "Register"
+  )}
+  <div className="cursor-effect"></div>
           </button>
+
         </form>
 
         <p className="mt-6 text-center text-gray-700">

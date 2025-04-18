@@ -12,23 +12,28 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="p-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white flex justify-between items-center shadow-lg">
-      <h1 className="text-xl font-semibold">
-        <Link to="/dashboard">Rating Platform</Link>
-      </h1>
+    <nav className="w-full py-4 bg-gradient-to-r from-teal-500 via-blue-400 to-indigo-600 text-white flex justify-between items-center shadow-2xl rounded-lg transform transition-all duration-300 hover:scale-105">
+      <div className="flex-1 text-center">
+        <h1 className="text-5xl font-extrabold text-white tracking-wide transition-all duration-300 ease-in-out transform hover:text-yellow-400 hover:scale-110 text-shadow-md">
+          <Link to="/dashboard">Rating Platform</Link>
+        </h1>
+      </div>
+
+     
       {user && (
-        <div className="flex space-x-4">
+        <div className="flex space-x-6">
           <button
-            className="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600 transition"
-            onClick={() => navigate({ to: "/auth/changepassword" })}
-          >
-            Change Password
-          </button>
-          <button
-            className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600 transition"
+            className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 hover:scale-110 transition-all duration-300 transform hover:shadow-lg"
             onClick={handleLogout}
           >
-            Logout
+            <i className="fas fa-sign-out-alt mr-2"></i> Logout
+          </button>
+
+          <button
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 hover:scale-110 transition-all duration-300 transform hover:shadow-lg"
+            onClick={() => navigate({ to: "/auth/changepassword" })}
+          >
+            <i className="fas fa-key mr-2"></i> Change Password
           </button>
         </div>
       )}

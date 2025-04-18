@@ -27,29 +27,28 @@ export default function StoreList() {
   });
 
   return (
-    <div className="mt-6 p-4 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Stores</h2>
+    <div className="mt-6 p-8 bg-gradient-to-r from-indigo-100 via-purple-200 to-pink-200 rounded-lg shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+      <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Stores</h2>
 
-      {/* Filters */}
-      <div className="flex gap-4 mb-4">
+     
+      <div className="flex gap-6 mb-8 justify-center">
         <input
-          className="input border rounded p-2 w-full"
+          className="border p-4 rounded-lg w-full focus:ring-2 focus:ring-indigo-500 shadow-md hover:shadow-xl transition-all"
           placeholder="Search by Name"
           onChange={(e) => setFilters({ ...filters, name: e.target.value })}
         />
         <input
-          className="input border rounded p-2 w-full"
+          className="border p-4 rounded-lg w-full focus:ring-2 focus:ring-indigo-500 shadow-md hover:shadow-xl transition-all"
           placeholder="Search by Email"
           onChange={(e) => setFilters({ ...filters, email: e.target.value })}
         />
         <input
-          className="input border rounded p-2 w-full"
+          className="border p-4 rounded-lg w-full focus:ring-2 focus:ring-indigo-500 shadow-md hover:shadow-xl transition-all"
           placeholder="Search by Address"
           onChange={(e) => setFilters({ ...filters, address: e.target.value })}
         />
-
         <select
-          className="border p-2 rounded"
+          className="border p-4 rounded-lg w-full focus:ring-2 focus:ring-indigo-500 shadow-md hover:shadow-xl transition-all"
           value={sort}
           onChange={(e) => setSort(e.target.value)}
         >
@@ -60,9 +59,10 @@ export default function StoreList() {
 
       {isLoading && <p className="text-center text-gray-500">Loading...</p>}
       {error && (
-        <p className="text-center text-red-500">Error: {error.message}</p>
+        <p className="text-center text-red-500 font-semibold">Error: {error.message}</p>
       )}
 
+      
       <table className="w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-gray-100">
@@ -76,7 +76,10 @@ export default function StoreList() {
           {stores?.map((store) => {
             const rating = Number(store.avgRating);
             return (
-              <tr key={store.id} className="border-b">
+              <tr
+                key={store.id}
+                className="border-b hover:bg-indigo-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              >
                 <td className="border p-2">{store.name}</td>
                 <td className="border p-2">{store.email}</td>
                 <td className="border p-2">{store.address}</td>

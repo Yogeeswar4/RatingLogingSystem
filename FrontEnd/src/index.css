@@ -1,1 +1,26 @@
 @import "tailwindcss";
+/* styles.css or app.css */
+button:hover .cursor-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta);
+    background-size: 400% 400%;
+    animation: gradient 2s ease infinite;
+    z-index: -1;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  

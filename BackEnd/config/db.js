@@ -10,7 +10,7 @@ const db = new Sequlize(
     dialect: "mysql",
     logging: false,
     dialectOptions: {
-      connectTimeout: 10000, // Optional: Set the timeout duration in milliseconds
+      connectTimeout: 10000, 
     },
   }
 );

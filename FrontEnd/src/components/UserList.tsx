@@ -3,14 +3,6 @@ import { fetcher } from "../utils/api";
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  address: string;
-  role: "admin" | "user" | "store_owner";
-}
-
 export default function UserList() {
   const [filters, setFilters] = useState({
     name: "",
@@ -32,27 +24,28 @@ export default function UserList() {
   });
 
   return (
-    <div className="mt-6 p-4 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Users</h2>
+    <div className="mt-6 p-8 bg-gradient-to-r from-indigo-100 via-purple-200 to-pink-200 rounded-lg shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+      <h2 className="text-3xl font-bold mb-6">Users</h2>
 
-      <div className="flex gap-4 mb-4">
+      {/* Filters */}
+      <div className="flex gap-6 mb-8">
         <input
-          className="border p-2 rounded w-full"
+          className="border p-4 rounded-lg w-full focus:ring-2 focus:ring-indigo-500 shadow-md hover:shadow-xl transition-all"
           placeholder="Search by Name"
           onChange={(e) => setFilters({ ...filters, name: e.target.value })}
         />
         <input
-          className="border p-2 rounded w-full"
+          className="border p-4 rounded-lg w-full focus:ring-2 focus:ring-indigo-500 shadow-md hover:shadow-xl transition-all"
           placeholder="Search by Email"
           onChange={(e) => setFilters({ ...filters, email: e.target.value })}
         />
         <input
-          className="border p-2 rounded w-full"
+          className="border p-4 rounded-lg w-full focus:ring-2 focus:ring-indigo-500 shadow-md hover:shadow-xl transition-all"
           placeholder="Search by Address"
           onChange={(e) => setFilters({ ...filters, address: e.target.value })}
         />
         <select
-          className="border p-2 rounded"
+          className="border p-4 rounded-lg w-full focus:ring-2 focus:ring-indigo-500 shadow-md hover:shadow-xl transition-all"
           onChange={(e) => setFilters({ ...filters, role: e.target.value })}
         >
           <option value="">All Roles</option>
@@ -63,10 +56,9 @@ export default function UserList() {
       </div>
 
       {isLoading && <p className="text-center text-gray-500">Loading...</p>}
-      {error && (
-        <p className="text-center text-red-500">Error: {error.message}</p>
-      )}
+      {error && <p className="text-center text-red-500">Error: {error.message}</p>}
 
+      {/* Users Table */}
       <table className="w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-gray-100">
@@ -79,7 +71,10 @@ export default function UserList() {
         <tbody>
           {users?.length ? (
             users.map((user) => (
-              <tr key={user.id} className="border-b">
+              <tr
+                key={user.id}
+                className="border-b hover:bg-indigo-100 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+              >
                 <td className="border p-2">
                   <Link
                     to={`/admin/user/$userid`.replace(
@@ -92,7 +87,7 @@ export default function UserList() {
                   </Link>
                 </td>
                 <td className="border p-2">{user.email}</td>
-                <td className="border p-2">{user.address}</td>{" "}
+                <td className="border p-2">{user.address}</td>
                 <td className="border p-2">{user.role}</td>
               </tr>
             ))

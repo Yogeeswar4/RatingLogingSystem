@@ -18,9 +18,7 @@ function RouteComponent() {
     role: "user",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -44,25 +42,16 @@ function RouteComponent() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg p-6">
-      <h2 className="text-2xl font-bold mb-4 text-center">Add New User</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {[
-          { label: "Full Name", name: "name", type: "text" },
-          { label: "Email", name: "email", type: "email" },
-          { label: "Password", name: "password", type: "password" },
-          {
-            label: "Address (Street, City, State, Postal Code)",
-            name: "address",
-            type: "text",
-          },
-        ].map(({ label, name, type }) => (
+    <div className="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg p-8">
+      <h2 className="text-2xl font-extrabold mb-6 text-center text-gray-800">Add New User</h2>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {[{ label: "Full Name", name: "name", type: "text" }, { label: "Email", name: "email", type: "email" }, { label: "Password", name: "password", type: "password" }, { label: "Address", name: "address", type: "text" }].map(({ label, name, type }) => (
           <div key={name} className="flex flex-col">
-            <label className="mb-1 font-medium" htmlFor={name}>
+            <label className="mb-2 font-medium text-gray-700" htmlFor={name}>
               {label}
             </label>
             <input
-              className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
               type={type}
               name={name}
               id={name}
@@ -74,11 +63,11 @@ function RouteComponent() {
           </div>
         ))}
         <div className="flex flex-col">
-          <label className="mb-1 font-medium" htmlFor="role">
+          <label className="mb-2 font-medium text-gray-700" htmlFor="role">
             Role
           </label>
           <select
-            className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
             name="role"
             id="role"
             onChange={handleChange}
@@ -87,7 +76,7 @@ function RouteComponent() {
             <option value="admin">Admin</option>
           </select>
         </div>
-        <button className="w-full bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+        <button className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-all duration-300">
           Add User
         </button>
       </form>

@@ -12,9 +12,11 @@ const UserNavbar = () => {
   };
   return (
     <nav className="p-4 bg-gray-800 text-white flex justify-between items-center">
-      <h1 className="text-xl">
-        <Link to="/owner/dashboard">Rating App</Link>
-      </h1>
+      <div className="flex-1 text-center">
+        <h1 className="text-3xl font-extrabold">
+          <Link to="/dashboard">Rating Platform</Link>
+        </h1>
+      </div>
       {user && (
         <div className="flex space-x-4">
           <button
